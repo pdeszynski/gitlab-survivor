@@ -1,0 +1,233 @@
+@import 'inc/mixins.less';
+@import 'inc/themes.less';
+
+@import 'lib/bootstrap.css';
+@import 'lib/bootstrap-responsive.css';
+@import 'core.css';
+
+body {
+  background-color: black;
+  padding-top: 20px;
+}
+
+#horizontal-wrapper {
+  margin: auto;
+  max-width: 1920px;
+}
+
+#banner {
+  margin-bottom: 32px;
+}
+
+.panel {
+  border-bottom-width: 6px;
+  border-bottom-style: solid;
+  border-right-width: 6px;
+  border-right-style: solid;
+}
+
+/* Banner */
+
+#banner {
+
+  position: relative;
+  .clearfix (left);
+
+  .logo {
+    float: left;
+    margin: 14px 0 10px 26px;
+  }
+
+  .info {
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    font-size: 500%;
+    line-height: 0.375;
+    font-family: MICRO;
+    text-align: right;
+
+    .company, .date { display: block; }
+  }
+}
+
+/* Leaderboards */
+
+.leaderboard {
+
+  font-size: 175%;
+
+  h2 {
+    display: inline-block;
+    background-position: left top;
+    background-repeat: repeat-x;
+    color: black;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0 0 10px;
+    line-height: 54px;
+    .text-glow (0.5em, rgba(255, 255, 255, 0.5));
+
+    span {
+      display: block;
+      padding: 0 50px 0 25px;
+      background-position: right top;
+      background-repeat: no-repeat;
+    }
+  }
+
+  @box-size: 52px;
+  @border-size: 4px;
+  @avatar-right-margin: 25px;
+
+  ol {
+    margin: 0 80px 0 0;
+    padding: 0 0 0 (2 * @box-size + 3 * @border-size + @avatar-right-margin);
+    list-style: none;
+    counter-reset: rank;
+  }
+
+  .avatar, li:before {
+    position: absolute;
+    top: 0;
+    border-width: @border-size;
+    border-style: solid;
+    line-height: @box-size;
+  }
+
+  li {
+    position: relative;
+    background-position: 0 33px;
+    background-repeat: repeat-x;
+    line-height: @box-size + 2 * @border-size;
+    margin: 12px 0;
+    padding: 0;
+    .clearfix;
+
+    &:before {
+      content: counter(rank);
+      counter-increment: rank;
+      left: -(2 * @box-size + 3 * @border-size + @avatar-right-margin);
+      text-align: center;
+      width: @box-size;
+    }
+  }
+
+  .avatar {
+    left: -(@box-size + 2 * @border-size + @avatar-right-margin);
+  }
+
+  .name, .count { background-color: black; }
+
+  .name {
+    display: inline-block;
+    padding-right: 0.5em;
+  }
+
+  .count {
+    float: right;
+    min-width: 2em;
+    padding-left: 0.5em;
+    text-align: right;
+  }
+}
+
+/* Charts */
+
+#charts {
+  height: 350px;
+  margin: 12px 0 14px 0;
+
+  // FIXME
+  .span4 { width: 30%; }
+}
+
+.chart-container {
+  background: #000;
+
+  .chart {
+    height: 236px;
+  }
+
+  label {
+    font-size: 18px;
+    text-transform: uppercase;
+    display: block;
+    padding: 10px;
+    margin-top: 6px;
+  }
+
+  .chart > * { display: block; }
+}
+
+/* Current stats */
+
+#current-stats {
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  padding-left: 60px;
+  line-height: 1;
+
+  .title {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+
+  .open-bug-count {
+    margin-top: 15px;
+    font-size: 164px;
+  }
+
+  .delta {
+    display: inline-block;
+    margin: 0;
+    padding-left: 110px;
+    font-size: 70px;
+    background-position: left 50;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Footer */
+
+.pulse {
+  0%   { opacity: 1; }
+  45%  { opacity: 1; }
+  50%  { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes pulse { .pulse; }
+@-moz-keyframes pulse { .pulse; }
+@-webkit-keyframes pulse { .pulse; }
+
+#footer {
+  clear: both;
+  font-size: 115%;
+  text-align: justify;
+  text-transform: uppercase;
+
+  .start {
+    float: right;
+
+    .animation-name (pulse);
+    .animation-duration (1.75s);
+    .animation-iteration-count (infinite);
+  }
+}
+
+/* Miscellaneous */
+
+.stripe {
+  width: 100%;
+  min-height: 6px;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+}
+
+.ranking {
+  margin-bottom: 20px;
+}

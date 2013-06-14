@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html ng-app class="github">
+<head>
+    <title>FilesTube Dashboard</title>
+
+    <script src="http://192.168.2.1:8080/target/target-script-min.js#anonymous"></script>
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, height=device-height, target-densitydpi=device-dpi" >
+
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/core.css" />
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+
+    <script type="text/javascript">
+
+        var app = {
+            settings: {
+                gitlabToken: 'Dwxr69bnsh1fZCfqSxyQ',
+                gitlabProjectId: 73
+            }
+        };
+    </script>
+
+    <script src="jquery-2.0.0.js"></script>
+    <script src="jquery.mobile-1.3.1"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="githubsurvivor/js/lib/svg-0.10.js"></script>
+    <script src="githubsurvivor/js/dashboard.js"></script>
+    <script src="githubsurvivor/js/charts.js"></script>
+
+    <script src="js/controllers/bugs.js"></script>
+
+</head>
+<body>
+
+<div id="vertical-wrapper">
+
+    <div id="horizontal-wrapper" class="container-fluid">
+
+    <!-- Banner -->
+    <div id="banner" class="row-fluid panel">
+        <div class="span12">
+            <hr class="stripe stripe-1" />
+            <hr class="stripe stripe-2" />
+            <hr class="stripe stripe-3" />
+            <img class="logo" src="img/github/logo.png" />
+            <div class="info">
+                <span class="company">RS</span>
+                <span class="date">Fri.170513</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboards -->
+
+
+    <div id="leaderboards" class="row-fluid">
+        <div class="span6">
+
+            <div class="leaderboard" id="top-closers">
+                <h2><span>Hall of Fame</span></h2>
+                <ol>
+
+                </ol>
+            </div>
+
+        </div>
+        <div class="span6">
+
+            <div class="leaderboard" id="worst-closers">
+                <h2><span>Hall of Shame</span></h2>
+                <ol>
+
+                </ol>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="charts" class="row-fluid panel" ng-controller="BugsController">
+
+        <div class="span12">
+            <hr class="stripe stripe-1" />
+            <hr class="stripe stripe-2" />
+            <hr class="stripe stripe-3" />
+        </div>
+
+        <div class="span4">
+            <table id="bug-rate-data" summary="Bugs opened/closed">
+                <thead>
+                <tr>
+                    <th>Period end</th>
+                    <th># bugs opened</th>
+                    <th># bugs closed</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="day in bugsByDate">
+                    <td>{{day.date}}</td>
+                    <td>{{day.bugsOpened}}</td>
+                    <td>{{day.bugsClosed}}</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="span4">
+            <table id="open-bug-data" summary="Open bugs">
+                <thead>
+                <tr>
+                    <th>Period end</th>
+                    <th># open bugs</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="day in bugsSummarized">
+                    <td>{{day.date}}</td>
+                    <td>{{day.bugsOpened}}</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="current-stats" class="span4">
+            <p class="title">Open bugs</p>
+            <p class="open-bug-count" contentEditable="true">
+                {{bugsOpen}}
+            </p>
+            <div class="delta pos">
+                0
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer" class="row-fluid">
+        GITHUB SURVIVOR TM & Copyright 1987 RS dev team
+        <span class="start">&lt;Insert coin to begin playing&gt;</span>
+    </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
