@@ -29,8 +29,10 @@ survivor.dashboard = (function () {
         });
     }
 
-    function initBugRateChart(args) {
-        var $dataTable = $('#bug-rate-data');
+    function initBugRateChart(bugsRate) {
+        var $dataTable = $('#bug-rate-data'),
+            $dataChart = $('#bug-rate-chart');
+
 
         var data = extractData($dataTable, [parseDate, parseInt, parseInt]);
         var rawValues = data.map(function (group) {
@@ -49,12 +51,13 @@ survivor.dashboard = (function () {
         });
 
         var chart = new survivor.charts.ColumnChart($dataTable.attr('summary'));
-        $dataTable.replaceWith(chart.element);
+        $dataChart.html(chart.element);
         chart.draw(relativeValues);
     }
 
-    function initBugCountChart() {
-        var $dataTable = $('#open-bug-data');
+    function initBugCountChart(bugsCount) {
+        var $dataTable = $('#open-bug-data'),
+            $dataChart = $('#open-bug-chart');
 
         var data = extractData($dataTable, [parseDate, parseInt]);
         var rawValues = data.map(function (row) {
@@ -69,7 +72,7 @@ survivor.dashboard = (function () {
         });
 
         var chart = new survivor.charts.LineChart($dataTable.attr('summary'));
-        $dataTable.replaceWith(chart.element);
+        $dataChart.html(chart.element);
         chart.draw(relativeValues);
     }
 

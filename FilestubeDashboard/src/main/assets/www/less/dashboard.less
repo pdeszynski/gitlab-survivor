@@ -176,7 +176,7 @@ body {
 
   .open-bug-count {
     margin-top: 15px;
-    font-size: 164px;
+    font-size: 100px;
   }
 
   .delta {
@@ -230,4 +230,46 @@ body {
 
 .ranking {
   margin-bottom: 20px;
+}
+
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 0.8);
+    text-align:center;z-index:99999;
+
+    .center-screen {
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        display: -webkit-box;
+        height: 100%;
+    }
+}
+
+.pulse {
+    animation: pulse 1s infinite;
+    -webkit-animation: pulse 1s infinite;
+    -moz-animation: pulse 1s infinite;
+    -o-animation: pulse 1s infinite;
+}
+
+#issues {
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+    padding-left: 60px;
+    line-height: 1;
+
+    .title {
+        margin-top: 10px;
+        font-size: 30px;
+    }
+
+    .open-issues-count {
+        margin-top: 15px;
+        font-size: 100px;
+    }
 }

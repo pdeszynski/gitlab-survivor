@@ -120,6 +120,108 @@
             <file
                 name="www/Makefile"
                 path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/Makefile" />
+            <file
+                name="test/lib/angular/angular-scenario.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/lib/angular/angular-scenario.js" />
+            <file
+                name="scripts/test.bat"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/scripts/test.bat" />
+            <file
+                name="test/unit/servicesSpec.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/unit/servicesSpec.js" />
+            <file
+                name="config/karma-e2e.conf.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/config/karma-e2e.conf.js" />
+            <file
+                name="www/js/filters.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/js/filters.js" />
+            <file
+                name="README.md"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/README.md" />
+            <file
+                name="www/js/app.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/js/app.js" />
+            <file
+                name="scripts/test.sh"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/scripts/test.sh" />
+            <file
+                name="test/lib/angular/angular-mocks.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/lib/angular/angular-mocks.js" />
+            <file
+                name="www/js/services.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/js/services.js" />
+            <file
+                name="test/unit/controllersSpec.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/unit/controllersSpec.js" />
+            <file
+                name="www/js/directives.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/js/directives.js" />
+            <file
+                name="test/e2e/runner.html"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/e2e/runner.html" />
+            <file
+                name="scripts/e2e-test.bat"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/scripts/e2e-test.bat" />
+            <file
+                name="www/js/controllers.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/js/controllers.js" />
+            <file
+                name="config/karma.conf.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/config/karma.conf.js" />
+            <file
+                name="scripts/e2e-test.sh"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/scripts/e2e-test.sh" />
+            <file
+                name="test/unit/filtersSpec.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/unit/filtersSpec.js" />
+            <file
+                name="test/e2e/scenarios.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/e2e/scenarios.js" />
+            <file
+                name="scripts/watchr.rb"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/scripts/watchr.rb" />
+            <file
+                name="scripts/web-server.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/scripts/web-server.js" />
+            <file
+                name="test/unit/directivesSpec.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/unit/directivesSpec.js" />
+            <file
+                name="www/partials/index.html"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/partials/index.html" />
+            <file
+                name="test/lib/angular/version.txt"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/test/lib/angular/version.txt" />
+            <file
+                name="www/partials/partial2.html"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/partials/partial2.html" />
+            <file
+                name="www/components/angularjs/LICENSE.md"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angularjs/LICENSE.md" />
+            <file
+                name="www/components/angular-resource/angular-resource.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angular-resource/angular-resource.js" />
+            <file
+                name="www/components/angularjs/angular.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angularjs/angular.js" />
+            <file
+                name="www/components/angular-resource/README.md"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angular-resource/README.md" />
+            <file
+                name="www/components/angular-resource/angular-resource.min.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angular-resource/angular-resource.min.js" />
+            <file
+                name="www/components/angularjs/README.md"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angularjs/README.md" />
+            <file
+                name="www/components/angular-resource/bower.json"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angular-resource/bower.json" />
+            <file
+                name="www/components/angularjs/angular.min.js"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angularjs/angular.min.js" />
+            <file
+                name="www/components/angularjs/bower.json"
+                path="/Users/piteer/AndroidStudioProjects/FilestubeDashboard/FilestubeDashboard/src/main/assets/www/components/angularjs/bower.json" />
         </source>
     </dataSet>
     <dataSet config="debug" >

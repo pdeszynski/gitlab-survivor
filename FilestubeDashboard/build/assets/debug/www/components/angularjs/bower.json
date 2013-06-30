@@ -1,0 +1,15 @@
+{
+  "name": "angularjs",
+  "version": "1.1.5",
+  "description": "AngularJS edge for bower package",
+  "main": "angular.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chaoscod3r/angularjs.git"
+  },
+  "license": "MIT",
+  "gitHead": "01362de785cabec001d950fe2408e60dd063932f",
+  "readme": "## [ AngularJS ](https://github.com/angular/angular.js)\n\nAngularJS edge for bower package\n\n* Website : [ AngularJS ](http://angularjs.org)\n* Repository : [ AngularJS Git ](https://github.com/angular/angular.js)\n* Tutorial: [ AngularJS Tutorials ](http://docs.angularjs.org/tutorial)\n* API: [ AngularJSAPI ](http://docs.angularjs.org/api)\n* Developer Guide: [ AngularJS Dev Guide ](http://docs.angularjs.org/guide)",
+  "readmeFilename": "README.md",
+  "_id": "angularjs@1.1.5"
+}

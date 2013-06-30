@@ -1,0 +1,136 @@
+<div class="overlay" ng-show="{{!wasBuildSuccessful}}">
+    <div class="center-screen">
+        <div class="pulse">
+
+            <h1 style="font-size:60px;">Game Over</h1>
+
+            <h2>Build failed</h2>
+        </div>
+    </div>
+</div>
+
+<div id="horizontal-wrapper" class="container-fluid">
+
+    <!-- Banner -->
+    <div id="banner" class="row-fluid panel">
+        <div class="span12">
+            <hr class="stripe stripe-1" />
+            <hr class="stripe stripe-2" />
+            <hr class="stripe stripe-3" />
+            <img class="logo" src="img/github/logo.png" />
+            <div class="info">
+                <span class="company">RS</span>
+                <span class="date">Fri.170513</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboards -->
+
+
+    <div id="leaderboards" class="row-fluid">
+        <div class="span6">
+
+            <div class="leaderboard" id="top-closers">
+                <h2><span>Hall of Fame</span></h2>
+                <ol>
+                    <li ng-repeat="developer in fame">
+                        <span class="name">{{developer.firstname}} {{developer.lastname}}</span>
+                        <span class="count">({{developer.issues_solved}})</span>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+        <div class="span6">
+
+            <div class="leaderboard" id="worst-closers">
+                <h2><span>Hall of Shame</span></h2>
+                <ol>
+                    <li ng-repeat="developer in shame">
+                        <span class="name">{{developer.firstname}} {{developer.lastname}}</span>
+                        <span class="count">({{developer.issues_solved}})</span>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row-fluid panel">
+        <div class="span12">
+            <hr class="stripe stripe-1" />
+            <hr class="stripe stripe-2" />
+            <hr class="stripe stripe-3" />
+        </div>
+        <div class="span12" id="issues">
+            <p class="title">Merge requests open</p>
+            <p class="open-issues-count">{{mergeRequests}}</p>
+        </div>
+
+    </div>
+    <div id="charts" class="row-fluid panel">
+
+        <div class="span12">
+            <hr class="stripe stripe-1" />
+            <hr class="stripe stripe-2" />
+            <hr class="stripe stripe-3" />
+        </div>
+
+        <div class="span4">
+            <table id="bug-rate-data" summary="Bugs opened/closed" style="display:none;">
+                <thead>
+                <tr>
+                    <th>Period end</th>
+                    <th># bugs opened</th>
+                    <th># bugs closed</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="day in bugsByDate">
+                    <td>{{day.date}}</td>
+                    <td>{{day.bugsOpened}}</td>
+                    <td>{{day.bugsClosed}}</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+            <div id="bug-rate-chart"></div>
+        </div>
+
+        <div class="span4">
+            <table id="open-bug-data" summary="Open bugs" style="display:none;">
+                <thead>
+                <tr>
+                    <th>Period end</th>
+                    <th># open bugs</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="day in bugsSummarized">
+                    <td>{{day.date}}</td>
+                    <td>{{day.bugsOpened}}</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+            <div id="open-bug-chart"></div>
+        </div>
+
+        <div id="current-stats" class="span4">
+            <p class="title">Open bugs</p>
+            <p class="open-bug-count" contentEditable="true">
+                {{bugsOpen}}
+            </p>
+            <div class="delta pos">
+                {{delta}}
+            </div>
+        </div>
+
+    </div>
+
+</div>

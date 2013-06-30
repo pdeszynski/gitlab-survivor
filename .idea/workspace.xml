@@ -35,7 +35,23 @@
     <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Web Conso" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94d33d1c-68f5-4aa1-93e9-7ee8238ed7e9" name="Default" comment="" />
+    <list default="true" id="94d33d1c-68f5-4aa1-93e9-7ee8238ed7e9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.bowerrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/piteer.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/components/angular/angular.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/components/angular/angular.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/components/angular/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/controllers/bugs.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FilestubeDashboard-FilestubeDashboard.iml" afterPath="$PROJECT_DIR$/FilestubeDashboard-FilestubeDashboard.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FilestubeDashboard.iml" afterPath="$PROJECT_DIR$/FilestubeDashboard.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/css/dashboard.css" afterPath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/css/dashboard.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/dashboard.js" afterPath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/dashboard.less" afterPath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/dashboard.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/index.html" afterPath="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="FilestubeDashboard.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,7 +73,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -94,6 +109,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -103,55 +119,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/java/com/redsky/filestubeDashboard/MainActivity.java">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="59" selection-start="647" selection-end="750" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+            <state line="12" column="70" selection-start="623" selection-end="623" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="720">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/dashboard.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="270" column="16" selection-start="4457" selection-end="4457" vertical-scroll-proportion="-17.92" vertical-offset="3602" max-vertical-offset="4200">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="143" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="240">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="report.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/report.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/index.html">
+        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/partials/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="52" selection-start="3486" selection-end="3486" vertical-scroll-proportion="-14.375" vertical-offset="1455" max-vertical-offset="2370">
-              <folding />
+            <state line="67" column="56" selection-start="2148" selection-end="2148" vertical-scroll-proportion="-16.875" vertical-offset="600" max-vertical-offset="2115">
+              <folding>
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/AndroidManifest.xml">
+      <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="371" selection-end="371" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/core.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bugs.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/controllers/bugs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="38" selection-start="835" selection-end="835" vertical-scroll-proportion="0.60229445" vertical-offset="0" max-vertical-offset="960">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/css/core.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="14" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+            <state line="22" column="44" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.6309751" vertical-offset="0" max-vertical-offset="1605">
               <folding />
             </state>
           </provider>
@@ -160,7 +178,25 @@
       <file leaf-file-name="dashboard.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="46" selection-start="750" selection-end="750" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
+            <state line="64" column="26" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.0" vertical-offset="847" max-vertical-offset="1395">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="168" column="33" selection-start="6634" selection-end="6634" vertical-scroll-proportion="0.0" vertical-offset="2737" max-vertical-offset="3345">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="22" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1260">
               <folding />
             </state>
           </provider>
@@ -169,7 +205,7 @@
       <file leaf-file-name="charts.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/charts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="47" selection-start="822" selection-end="822" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1650">
+            <state line="42" column="27" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="1650">
               <folding />
             </state>
           </provider>
@@ -181,6 +217,14 @@
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="tasksExpandState">
@@ -216,22 +260,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/FilestubeDashboard/assets/www/index.html" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/main.js" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/Makefile" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/dashboard.less" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/core.less" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/css/core.css" />
         <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/inc/themes.less" />
         <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/charts.js" />
         <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/java/com/redsky/filestubeDashboard/MainActivity.java" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/dashboard.js" />
-        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/index.html" />
         <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/controllers/bugs.js" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/directives.js" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/filters.js" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/dashboard.js" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/bower.json" />
+        <option value="$PROJECT_DIR$/.bowerrc" />
+        <option value="$PROJECT_DIR$/Makefile" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/index.html" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/app.js" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/dashboard.less" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/partials/index.html" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/services.js" />
+        <option value="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/controllers.js" />
       </list>
     </option>
   </component>
@@ -239,6 +283,7 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
     <option name="y" value="22" />
     <option name="width" value="1440" />
     <option name="height" value="874" />
@@ -260,7 +305,7 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -286,8 +331,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -316,11 +359,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gradle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wrapper" />
+              <option name="myItemId" value="FilestubeDashboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -337,9 +376,257 @@
               <option name="myItemId" value="FilestubeDashboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="less" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularjs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular-resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FilestubeDashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,7 +635,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="Errors" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -356,10 +643,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="AVD_for_Nexus_4_by_Google" />
+    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -368,10 +656,10 @@
       <recent name="$PROJECT_DIR$/FilestubeDashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/css/lib" />
-      <recent name="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www" />
-      <recent name="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/css" />
+      <recent name="$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/" />
+      <recent name="$PROJECT_DIR$/FilestubeDashboard/src/main/assets" />
       <recent name="$PROJECT_DIR$/FilestubeDashboard/src/main" />
     </key>
   </component>
@@ -383,6 +671,24 @@
       <setting name="params" value="" />
       <setting name="workDir" value="file://$PROJECT_DIR$" />
       <setting name="debug" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -405,24 +711,6 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="GriffonRunConfigurationType" factoryName="Griffon">
@@ -576,9 +864,29 @@
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="35133000" />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="874" extended-state="6" />
-    <editor active="false" />
+    <frame x="-1" y="22" width="1440" height="874" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969433" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -592,11 +900,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32804233" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6710875" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6710875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13055953" sideWeight="0.76392573" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16427547" sideWeight="0.76392573" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -669,105 +977,106 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/res/values/dimens.xml">
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/directives.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="44" selection-start="185" selection-end="185" vertical-scroll-proportion="0.08604206" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
+        <state line="5" column="27" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/core.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="12" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/css/dashboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="32" selection-start="501" selection-end="505" vertical-scroll-proportion="0.66091955" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/inc/themes.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="30" selection-start="4769" selection-end="4772" vertical-scroll-proportion="-11.884615" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/inc/mixins.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="270" selection-end="271" vertical-scroll-proportion="0.43103448" vertical-offset="0" max-vertical-offset="0" />
+        <state line="10" column="0" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/Makefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="19" selection-start="42" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="285" />
+        <state line="13" column="19" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/dashboard.less">
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="55" selection-end="123" vertical-scroll-proportion="0.027372263" vertical-offset="0" max-vertical-offset="0" />
+        <state line="3" column="1" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/res/values/styles.xml">
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="1" selection-start="200" selection-end="200" vertical-scroll-proportion="0.32846716" vertical-offset="0" max-vertical-offset="548" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="143" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/report.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="22" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="548">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/css/core.css">
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/charts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="14" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/core.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="371" selection-end="371" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/java/com/redsky/filestubeDashboard/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="59" selection-start="647" selection-end="750" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+        <state line="42" column="27" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0" vertical-offset="772" max-vertical-offset="1650">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="52" selection-start="3486" selection-end="3486" vertical-scroll-proportion="-14.375" vertical-offset="1455" max-vertical-offset="2370">
+        <state line="12" column="70" selection-start="623" selection-end="623" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/less/dashboard.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="270" column="16" selection-start="4457" selection-end="4457" vertical-scroll-proportion="-17.92" vertical-offset="3602" max-vertical-offset="4200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/partials/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="56" selection-start="2148" selection-end="2148" vertical-scroll-proportion="-16.875" vertical-offset="600" max-vertical-offset="2115">
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="33" selection-start="6634" selection-end="6634" vertical-scroll-proportion="0.0" vertical-offset="2737" max-vertical-offset="3345">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="46" selection-start="750" selection-end="750" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
+        <state line="64" column="26" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/githubsurvivor/js/charts.js">
+    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="47" selection-start="822" selection-end="822" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1650">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FilestubeDashboard/src/main/assets/www/js/controllers/bugs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="38" selection-start="835" selection-end="835" vertical-scroll-proportion="0.60229445" vertical-offset="0" max-vertical-offset="960">
+        <state line="22" column="44" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.6309751" vertical-offset="0" max-vertical-offset="1605">
           <folding />
         </state>
       </provider>
