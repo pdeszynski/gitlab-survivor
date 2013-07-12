@@ -7,4 +7,9 @@ angular.module('ftDashboard.filters', []).
     return function(text) {
       return String(text).replace(/\%VERSION\%/mg, version);
     }
-  }]);
+  }])
+  .filter('abs', function() {
+      return function(number) {
+          return Math.abs(number);
+      }
+  });

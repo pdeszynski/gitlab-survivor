@@ -1,4 +1,4 @@
-<div class="overlay" ng-show="{{!wasBuildSuccessful}}">
+<div class="overlay" ng-show="!wasBuildSuccessful">
     <div class="center-screen">
         <div class="pulse">
 
@@ -126,8 +126,8 @@
             <p class="open-bug-count" contentEditable="true">
                 {{bugsOpen}}
             </p>
-            <div class="delta pos">
-                {{delta}}
+            <div class="delta" ng-class="{true: 'delta pos', false: 'delta neg'}[delta >= 0]">
+                {{delta | abs}}
             </div>
         </div>
 

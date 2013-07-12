@@ -5,10 +5,10 @@
 angular.module('ftDashboard.controllers', []).
     controller('Index', [
         '$scope', '$q', '$timeout',
-        'Versions', 'Issues', 'GroupUsers', 'Jenkins',
+        'Versions', 'issues', 'GroupUsers', 'Jenkins',
         'gitlabIssues', 'gitlabMergeRequests',
         'lastVersion', 'groupId', 'hall', 'hallLength',
-        function($scope, $q, $timeout, Versions, Issues, GroupUsers, Jenkins, gitlabIssues, gitlabMergeRequests, lastVersion, groupId, hall, hallLength) {
+        function($scope, $q, $timeout, Versions, issues, GroupUsers, Jenkins, gitlabIssues, gitlabMergeRequests, lastVersion, groupId, hall, hallLength) {
             //has to have default values, cause it will crash - chart can start drawing before data was applied to DOM
             $scope.bugsByDate = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0', bugsClosed: '0'}];
             $scope.bugsSummarized = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0'}];
@@ -24,20 +24,6 @@ angular.module('ftDashboard.controllers', []).
                         $scope.mergeRequests = count;
                     }, function (error) {
                         console.log('An error occured while obtaining merge requests');
-                        console.log(error);
-                    });
-
-                gitlabIssues.get()
-                    .then(function(issues) {
-                        $scope.bugsOpen = gitlabIssues.getBugsOpened();
-                        $scope.bugsByDate = gitlabIssues.getBugsByDate();
-                        $scope.bugsSummarized = gitlabIssues.getBugsSummarized();
-                        $scope.delta = gitlabIssues.getBugsDelta();
-
-                        //TODO: move this to directive!
-                        $timeout(survivor.dashboard.init, 200);
-                    }, function(error) {
-                        console.log("An error occured obtaining issues from gitlab");
                         console.log(error);
                     });
 
@@ -61,8 +47,10 @@ angular.module('ftDashboard.controllers', []).
                 defer.promise.then(function (versions) {
                     var version = lastVersion(versions),
                         defer = $q.defer();
-                    Issues.get(
-                        {'fixed_version_id': version.id},
+
+                    console.log('version');
+                    console.log(version);
+                    issues.get(version.id).then(
                         function(issues) {
                             defer.resolve(issues);
                         },
@@ -71,7 +59,24 @@ angular.module('ftDashboard.controllers', []).
                             defer.reject();
                         }
                     );
+
+                    gitlabIssues.get()
+                        .then(function(issues) {
+                            $scope.bugsOpen = gitlabIssues.getBugsOpened();
+                            $scope.bugsByDate = gitlabIssues.getBugsByDate(version.created_on);
+                            $scope.bugsSummarized = gitlabIssues.getBugsSummarized(version.created_on);
+                            $scope.delta = gitlabIssues.getBugsDelta(version.created_on);
+
+                            //TODO: move this to directive!
+                            $timeout(survivor.dashboard.init, 200);
+                        }, function(error) {
+                            console.log("An error occured obtaining issues from gitlab");
+                            console.log(error);
+                        });
                     return defer.promise;
+                }, function(error) {
+                    console.log('An error occured');
+                    console.log(error);
                 })
                 .then(function(issues) {
                     GroupUsers.get({group_id: groupId}, function (users) {
