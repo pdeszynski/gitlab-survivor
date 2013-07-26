@@ -95,7 +95,7 @@ angular.module('ftDashboard.controllers', []).
                         console.log('Could not get list of users');
                     });
                 });
-                //$timeout(getData, 15000);
+                $timeout(getData, 15000);
             }
             getData();
         }
