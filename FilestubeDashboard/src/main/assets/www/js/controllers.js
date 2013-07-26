@@ -48,8 +48,6 @@ angular.module('ftDashboard.controllers', []).
                     var version = lastVersion(versions),
                         defer = $q.defer();
 
-                    console.log('version');
-                    console.log(version);
                     issues.get(version.id).then(
                         function(issues) {
                             defer.resolve(issues);
@@ -97,7 +95,7 @@ angular.module('ftDashboard.controllers', []).
                         console.log('Could not get list of users');
                     });
                 });
-                $timeout(getData, 15000);
+                //$timeout(getData, 15000);
             }
             getData();
         }

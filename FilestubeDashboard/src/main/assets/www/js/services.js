@@ -13,7 +13,7 @@ angular.module('ftDashboard.services', [])
     .value('redmineUri', 'http://ftredmine.i.red-sky.pl/')
     .value('hallLength', 3)
     //defines how long pagination should be done before quitting
-    .value('maxRecursiveCalls', 5)
+    .value('maxRecursiveCalls', 20)
     .factory('projectUri', ['redmineUri', function(redmineUri) {
          return redmineUri + '/projects/filestube/';
     }])
@@ -110,55 +110,77 @@ angular.module('ftDashboard.services', [])
          */
         function($resource, $q, gitlabProjectUri, gitlabToken) {
         //cause we don't know how many issues are needed and there's no necessary filtering, limit it to 100 issues
-        var resource = $resource(gitlabProjectUri + 'issues', {private_token: gitlabToken, per_page: 200}, {
+        var limit = 100,
+            resource = $resource(gitlabProjectUri + 'issues', {private_token: gitlabToken, per_page: limit}, {
                 get: {method: 'GET', isArray: true}
             }),
-            bugsOpenedSum = 0, bugsByDate = [], bugsSummarized = [], delta = 0;
+            bugsOpenedSum = 0, bugsByDate = [], bugsSummarized = [], delta = 0,
+            dateToDayBeginning = function(dateString) {
+                var date = new Date(dateString);
+                date.setHours(0);
+                date.setMinutes(0);
+                date.setSeconds(0);
+
+                return date;
+            },
+            initDayStat = function(dates, dateString) {
+                if (dates[dateString] === undefined) {
+                    dates[dateString] = {
+                        bugsOpened: 0,
+                        bugsClosed: 0
+                    };
+                }
+            };
 
         return {
             get: function() {
+                bugsByDate = [];
+                bugsSummarized = [];
+                bugsOpenedSum = 0;
+                delta = 0;
                 var defer = $q.defer(),
-                    bugsGroupped = {};
-                    bugsByDate = [];
-                    bugsSummarized = [];
-                    bugsOpenedSum = 0;
-                resource.get({}, function(issues) {
-                    angular.forEach(issues, function(issue) {
-                        if (issue.closed == false) {
-                            ++bugsOpenedSum;
-                        }
+                    page = 1,
+                    bugsGroupped = {},
+                    recursiveGet = function() {
+                        resource.get({page: page}, function(issues) {
+                            angular.forEach(issues, function(issue) {
+                                if (issue.closed == false) {
+                                    ++bugsOpenedSum;
+                                }
 
-                        //var date = issue.created_at.split('T')[0] + 'T00:00:00+02:00';
-                        var date = new Date(issue.created_at);
-                        date.setHours(0);
-                        date.setMinutes(0);
-                        date.setSeconds(0);
-                        date = date.toISOString();
-                        if (bugsGroupped[date] === undefined) {
-                            bugsGroupped[date] = {
-                                bugsOpened: 0,
-                                bugsClosed: 0
+                                var createdDate = dateToDayBeginning(issue.created_at),
+                                    updateDate = dateToDayBeginning(issue.updated_at);
+                                createdDate = createdDate.toISOString();
+                                updateDate = updateDate.toISOString();
+                                initDayStat(bugsGroupped, createdDate);
+                                initDayStat(bugsGroupped, updateDate);
+                                bugsGroupped[createdDate]['bugsOpened']++;
+                                if (issue.closed == true) {
+                                    bugsGroupped[updateDate]['bugsClosed']++;
+                                }
+                            });
+
+                            if (issues.length < limit) {
+                                angular.forEach(bugsGroupped, function(bugs, day) {
+                                    bugsByDate.push({
+                                        date: new Date(Date.parse(day)),
+                                        bugsOpened: bugs.bugsOpened,
+                                        bugsClosed: bugs.bugsClosed
+                                    });
+                                });
+                                bugsByDate.sort(function (a, b) {
+                                    return a.date.getTime() - b.date.getTime();
+                                });
+                                defer.resolve(issues);
+                            } else {
+                                page++;
+                                recursiveGet();
                             }
-                        }
-                        bugsGroupped[date][issue.closed == false ? 'bugsOpened' : 'bugsClosed']++;
-                    });
-
-                    angular.forEach(bugsGroupped, function(bugs, day) {
-                        bugsByDate.push({
-                            date: new Date(Date.parse(day)),
-                            bugsOpened: bugs.bugsOpened,
-                            bugsClosed: bugs.bugsClosed
+                        }, function(error) {
+                            defer.reject(error);
                         });
-                    });
-    
-                    //take last 2 weeks
-                    bugsByDate = bugsByDate.slice(0, 14);
-                    bugsByDate.reverse();
-
-                    defer.resolve(issues);
-                }, function(error) {
-                    defer.reject(error);
-                });
+                    };
+                recursiveGet();
                 return defer.promise;
             },
 
@@ -197,11 +219,10 @@ angular.module('ftDashboard.services', [])
                 sprintStartDate.setMinutes(0);
                 sprintStartDate.setSeconds(0);
 
-
                 for (var i = 0, len = bugsByDate.length; i < len; ++i) {
                     var today = bugsByDate[i];
                     bugsOpened += today.bugsOpened - today.bugsClosed;
-                    if (bugsOpened < 0) bugsOpened = 0;
+
                     if (today.date >= sprintStartDate) {
                         //push only ones which are from current sprint on graph
                         bugsSummarized.push({
@@ -265,7 +286,7 @@ angular.module('ftDashboard.services', [])
                                defer.reject(error);
                             });
                         };
-                        recursiveGet();
+                    recursiveGet();
 
                     return defer.promise;
                 }
