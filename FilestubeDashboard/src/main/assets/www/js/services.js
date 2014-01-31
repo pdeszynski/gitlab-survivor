@@ -13,7 +13,7 @@ angular.module('ftDashboard.services', [])
     .value('redmineUri', 'http://ftredmine.i.red-sky.pl/')
     .value('hallLength', 3)
     //defines how long pagination should be done before quitting
-    .value('maxRecursiveCalls', 20)
+    .value('maxRecursiveCalls', 200)
     .factory('projectUri', ['redmineUri', function(redmineUri) {
          return redmineUri + '/projects/filestube/';
     }])
@@ -25,7 +25,7 @@ angular.module('ftDashboard.services', [])
     }])
     .value('jenkinsUri', 'http://jenkins.i.red-sky.pl/')
     .factory('jenkinsProjectUri', ['jenkinsUri', function(jenkinsUri) {
-        return jenkinsUri + 'job/FilesTube-Frontend-Master/api/json';
+        return jenkinsUri + 'job/FilesTube-Frontend-Master-ftbuild/api/json';
     }])
 
     .factory('Versions', ['$resource', 'projectUri', 'redmineKey', function ($resource, projectUri, redmineKey) {
@@ -139,12 +139,13 @@ angular.module('ftDashboard.services', [])
                 bugsOpenedSum = 0;
                 delta = 0;
                 var defer = $q.defer(),
-                    page = 1,
+                    page = 0,
                     bugsGroupped = {},
                     recursiveGet = function() {
+                        page++;
                         resource.get({page: page}, function(issues) {
                             angular.forEach(issues, function(issue) {
-                                if (issue.closed == false) {
+                                if (issue.state == "opened") {
                                     ++bugsOpenedSum;
                                 }
 
@@ -155,7 +156,7 @@ angular.module('ftDashboard.services', [])
                                 initDayStat(bugsGroupped, createdDate);
                                 initDayStat(bugsGroupped, updateDate);
                                 bugsGroupped[createdDate]['bugsOpened']++;
-                                if (issue.closed == true) {
+                                if (issue.state == "closed") {
                                     bugsGroupped[updateDate]['bugsClosed']++;
                                 }
                             });
@@ -173,7 +174,6 @@ angular.module('ftDashboard.services', [])
                                 });
                                 defer.resolve(issues);
                             } else {
-                                page++;
                                 recursiveGet();
                             }
                         }, function(error) {
@@ -258,25 +258,26 @@ angular.module('ftDashboard.services', [])
                     get: {method: 'GET', isArray: true}
                 }),
                 mergeRequestsCount = 0,
-                page = 1,
-                allRequests = [];
+                page = 0,
+                openRequests = [];
 
             return {
                 get: function() {
+                    openRequests = [];
                     var defer = $q.defer(),
                         mergeRequestsCount = 0,
                         recursionDepth = 0,
-                        page = 1,
+                        page = 0,
                         recursiveGet = function() {
-
+                            page++;
                             resource.get({page: page}, function(mergeRequests) {
                                 angular.forEach(mergeRequests, function(request) {
-                                    if (request.closed == false) {
+                                    if (request.state == "opened") {
                                         ++mergeRequestsCount;
+                                        openRequests.push(request);
                                     }
                                 });
                                 if (mergeRequests.length == limit && maxRecursiveCalls > recursionDepth) {
-                                    page++;
                                     recursionDepth++;
                                     recursiveGet();
                                 } else {
@@ -285,12 +286,27 @@ angular.module('ftDashboard.services', [])
                             }, function(error) {
                                defer.reject(error);
                             });
+
                         };
                     recursiveGet();
 
                     return defer.promise;
+                },
+                getMergeReady: function() {
+                    if (openRequests.length = 0) {
+                        this.get().then(this.getMergeReady);
+                    }
+                    //TODO: use q.all([promises]);
+                    angular.forEach(openRequests, function(request) {
+
+                    });
                 }
             };
+    }])
+
+    .factory('gitlabMergeComments', ['$resource', '$q', 'gitlabProjectUri', 'gitlabToken',
+            function ($resource, $q, gitlabProjectUri, gitlabToken) {
+
     }])
 
     .factory('Jenkins', ['$resource', '$q', 'jenkinsProjectUri', 'jenkinsToken',

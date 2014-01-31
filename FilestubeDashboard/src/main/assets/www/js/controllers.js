@@ -16,7 +16,8 @@ angular.module('ftDashboard.controllers', []).
             $scope.delta = 0;
             $scope.wasBuildSuccessful = true;
             $scope.mergeRequests = 0;
-
+            //TODO: now $q has .all function which can wait for all defereds
+            //change the code to make it easier, without callback hell
             var getData = function () {
 
                 gitlabMergeRequests.get()

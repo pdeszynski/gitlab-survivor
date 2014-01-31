@@ -73,6 +73,6 @@ init: packages submodule-update node-packages css bootstrap
 	$(call bower)
 
 weinre:
-	weinre --boundHost -all- --debug -true
+	weinre --httpPort 8083 --boundHost -all- --debug -true
 
 .PHONY: all css clean-css bower init css css-watch
