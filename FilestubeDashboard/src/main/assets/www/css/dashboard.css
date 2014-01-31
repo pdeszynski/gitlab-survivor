@@ -1,7 +1,5 @@
 @import 'lib/bootstrap.css';
-
 @import 'lib/bootstrap-responsive.css';
-
 @import 'core.css';
 html.github body {
   color: #eb3b16;
@@ -321,78 +319,45 @@ body {
 }
 /* Footer */
 .pulse 0% {
-  opacity: 1;
-}
-.pulse 45% {
-  opacity: 1;
+  opacity: 0.0;
 }
 .pulse 50% {
-  opacity: 0;
-}
-.pulse 95% {
-  opacity: 0;
+  opacity: 1.0;
 }
 .pulse 100% {
-  opacity: 1;
+  opacity: 0.0;
 }
 @keyframes pulse {
-  animation: pulse 1s infinite;
-  -webkit-animation: pulse 1s infinite;
-  -moz-animation: pulse 1s infinite;
-  -o-animation: pulse 1s infinite;0% {
-    opacity: 1;
-  }
-  45% {
-    opacity: 1;
+  0% {
+    opacity: 0.0;
   }
   50% {
-    opacity: 0;
-  }
-  95% {
-    opacity: 0;
+    opacity: 1.0;
   }
   100% {
-    opacity: 1;
+    opacity: 0.0;
   }
 }
 @-moz-keyframes pulse {
-  animation: pulse 1s infinite;
-  -webkit-animation: pulse 1s infinite;
-  -moz-animation: pulse 1s infinite;
-  -o-animation: pulse 1s infinite;0% {
-    opacity: 1;
-  }
-  45% {
-    opacity: 1;
+  0% {
+    opacity: 0.0;
   }
   50% {
-    opacity: 0;
-  }
-  95% {
-    opacity: 0;
+    opacity: 1.0;
   }
   100% {
-    opacity: 1;
+    opacity: 0.0;
   }
 }
 @-webkit-keyframes pulse {
-  animation: pulse 1s infinite;
-  -webkit-animation: pulse 1s infinite;
-  -moz-animation: pulse 1s infinite;
-  -o-animation: pulse 1s infinite;0% {
-    opacity: 1;
-  }
-  45% {
-    opacity: 1;
+  0% {
+    opacity: 0.0;
   }
   50% {
-    opacity: 0;
-  }
-  95% {
-    opacity: 0;
+    opacity: 1.0;
   }
   100% {
-    opacity: 1;
+    opacity: 0.0;
   }
 }
 #footer {
@@ -441,7 +406,20 @@ body {
   display: -webkit-box;
   height: 100%;
 }
-.pulse {
+.overlay-bottom {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  z-index: 99999;
+}
+.overlay-bottom .building {
+  color: #FDB22B;
+  font-family: PressStart;
+  text-align: justify;
+  text-transform: uppercase;
+  text-shadow: #E99602 0px 0px 1em;
+}
+.pulsate {
   animation: pulse 1s infinite;
   -webkit-animation: pulse 1s infinite;
   -moz-animation: pulse 1s infinite;

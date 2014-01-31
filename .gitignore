@@ -1,6 +1,7 @@
 .DS_Store
 .gradle
 .idea
+node_modules
 FilestubeDashboard/src/main/assets/www/components/
 
 FilestubeDashboard/build/

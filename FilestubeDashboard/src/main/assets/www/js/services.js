@@ -25,7 +25,7 @@ angular.module('ftDashboard.services', [])
     }])
     .value('jenkinsUri', 'http://jenkins.i.red-sky.pl/')
     .factory('jenkinsProjectUri', ['jenkinsUri', function(jenkinsUri) {
-        return jenkinsUri + 'job/FilesTube-Frontend-Master-ftbuild/api/json';
+        return jenkinsUri + 'job/FilesTube-Frontend-Master-ftbuild/lastBuild/api/json';
     }])
 
     .factory('Versions', ['$resource', 'projectUri', 'redmineKey', function ($resource, projectUri, redmineKey) {
@@ -37,8 +37,8 @@ angular.module('ftDashboard.services', [])
         };
     })
 
-    //factory obtaining data from remote source about issues
-    .factory('issues',
+    //factory obtaining data from remote source about tasks for current sprint
+    .factory('tasks',
         ['$resource', '$q', 'projectUri', 'redmineKey', 'maxRecursiveCalls',
         function($resource, $q, projectUri, redmineKey, maxRecursiveCalls) {
         var limit = 100,
@@ -306,7 +306,6 @@ angular.module('ftDashboard.services', [])
 
     .factory('gitlabMergeComments', ['$resource', '$q', 'gitlabProjectUri', 'gitlabToken',
             function ($resource, $q, gitlabProjectUri, gitlabToken) {
-
     }])
 
     .factory('Jenkins', ['$resource', '$q', 'jenkinsProjectUri', 'jenkinsToken',
@@ -327,8 +326,11 @@ angular.module('ftDashboard.services', [])
 
                     return defer.promise;
                 },
+                inProgress: function() {
+                    return projectInfo.building;
+                },
                 wasSuccessful: function() {
-                    return projectInfo.lastBuild.number == projectInfo.lastSuccessfulBuild.number;
+                    return this.inProgress() || projectInfo.result === "SUCCESS";
                 }
             };
     }]);

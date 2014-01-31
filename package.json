@@ -1,0 +1,23 @@
+{
+  "name": "FilestubeDashboard",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "~0.4.2"
+  },
+  "devDependencies": {
+    "grunt-less": "~0.1.7",
+    "grunt-contrib-less": "~0.9.0",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.red-sky.pl:deszynski/filestube-dashboard.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
