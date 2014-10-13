@@ -17,17 +17,17 @@
         //defines how long pagination should be done before quitting
         .value('maxRecursiveCalls', 200)
         .factory('projectUri', ['redmineUri', function(redmineUri) {
-             return redmineUri + '/projects/filestube/';
+             return redmineUri + '/projects/[your project name in a redmine]/';
         }])
         .value('groupId', 19)
         .value('gitlabProjectId', 953)
-        .value('gitlabUri', 'https://git.i.red-sky.pl/')
+        .value('gitlabUri', 'your gitlab URI with a trailing slash')
         .factory('gitlabProjectUri', ['gitlabUri', 'gitlabProjectId', function(gitlabUri, gitlabProjectId) {
             return gitlabUri + 'api/v3/projects/' + gitlabProjectId + '/';
         }])
-        .value('jenkinsUri', 'http://jenkins.i.red-sky.pl/')
+        .value('jenkinsUri', 'Your jenkins URI with a trailing slash')
         .factory('jenkinsProjectUri', ['jenkinsUri', function(jenkinsUri) {
-            return jenkinsUri + 'job/TubeSter-Deploy-Testing/lastBuild/api/json';
+            return jenkinsUri + 'job/<your project name>/lastBuild/api/json';
         }])
 
         .factory('Versions', ['$resource', 'projectUri', 'redmineKey', function ($resource, projectUri, redmineKey) {
