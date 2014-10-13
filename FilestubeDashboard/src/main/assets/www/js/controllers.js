@@ -2,13 +2,10 @@
 
 /* Controllers */
 
-angular.module('ftDashboard.controllers', []).
+angular.module('ftDashboard.controllers', ['ftDashboard.components.login', 'ftDashboard.hall.hall', 'ftDashboard.hall.sprints', 'ftDashboard.issues.issues']).
     controller('Index', [
-        '$scope', '$q', '$timeout',
-        'Versions', 'tasks', 'GroupUsers', 'Jenkins',
-        'gitlabIssues', 'gitlabMergeRequests',
-        'lastVersion', 'groupId', 'hall', 'hallLength',
-        function($scope, $q, $timeout, Versions, tasks, GroupUsers, Jenkins, gitlabIssues, gitlabMergeRequests, lastVersion, groupId, hall, hallLength) {
+        '$scope', '$q', '$timeout', '$interval', 'backendLogin', 'sprints', 'issues', 'Jenkins', 'gitlabMergeRequests', 'hall',
+        function($scope, $q, $timeout, $interval, backendLogin, sprints, issues, Jenkins, gitlabMergeRequests, hall) {
             //has to have default values, cause it will crash - chart can start drawing before data was applied to DOM
             $scope.bugsByDate = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0', bugsClosed: '0'}];
             $scope.bugsSummarized = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0'}];
@@ -16,6 +13,48 @@ angular.module('ftDashboard.controllers', []).
             $scope.delta = 0;
             $scope.wasBuildSuccessful = true;
             $scope.mergeRequests = 0;
+            backendLogin.login()
+                .then(function () {
+                    sprints.getActive()
+                        .then(function (sprint) {
+                            function tick() {
+                                issues.bugsOpened()
+                                    .then(function (bugs) {
+                                        console.log('bugs opened', bugs.length);
+                                        $scope.bugsOpen = bugs.length;
+                                    });
+                                issues.bugsSprint(sprint)
+                                    .then(function (bugs) {
+                                        var byDate = issues.countByDate(bugs);
+                                        console.log('bugsByDate', byDate);
+                                        $scope.bugsByDate = byDate;
+                                    });
+                                issues.countBugsSum(14)
+                                    .then(function (sum) {
+                                        $scope.bugsSummarized = sum;
+                                        $scope.delta = sum[sum.length - 1].bugsOpened - sum[0].bugsOpened;
+                                    });
+
+                                $timeout(survivor.dashboard.init, 200);
+                                $timeout(tick, 30 * 1000);
+                            }
+                            tick();
+                        }, function () {
+                            console.log('An error occured while obtaining issues from backend');
+                        });
+                    function generateHall() {
+                        hall.get()
+                            .then(function (hallUsers) {
+                                console.log('hall users', hallUsers);
+                                $scope.fame = hallUsers.slice(0, 3);
+                                $scope.shame = hallUsers.slice(-3).reverse();
+                            }
+                        );
+                    }
+                    $interval(generateHall, 30 * 1000);
+                }, function () {
+                    console.log('An error occured while login in to youtrack');
+                });
             //TODO: now $q has .all function which can wait for all defereds
             //change the code to make it easier, without callback hell
             (function tick() {
@@ -45,72 +84,5 @@ angular.module('ftDashboard.controllers', []).
                         $timeout(tick, 30000);
                     });
             })();
-            (function tick() {
-                var versionsDefer = $q.defer(),
-                    tasksDefer = $q.defer();
-                Versions.get({}, function(versions) {
-                    versionsDefer.resolve(versions);
-
-                }, function (error) {
-                    console.log('Could not obtain versions');
-                    versionsDefer.reject();
-                });
-
-                versionsDefer.promise.then(function (versions) {
-                    var version = lastVersion(versions);
-
-                    tasks.get(version.id).then(
-                        function(tasks) {
-                            tasksDefer.resolve(tasks);
-                        },
-                        function (error) {
-                            console.log('Could not obtain tasks list for current sprint');
-                            tasksDefer.reject();
-                        }
-                    );
-
-                    gitlabIssues.get()
-                        .then(function(issues) {
-                            $scope.bugsOpen = gitlabIssues.getBugsOpened();
-                            $scope.bugsByDate = gitlabIssues.getBugsByDate(version.created_on);
-                            $scope.bugsSummarized = gitlabIssues.getBugsSummarized(version.created_on);
-                            console.log($scope.bugsSummarized);
-                            $scope.delta = gitlabIssues.getBugsDelta(version.created_on);
-
-                            //TODO: move this to directive!
-                            $timeout(survivor.dashboard.init, 200);
-                        }, function(error) {
-                            console.log("An error occured obtaining issues from gitlab");
-                            console.log(error);
-                        });
-                }, function(error) {
-                    console.log('An error occured');
-                    console.log(error);
-                });
-
-                tasksDefer.promise.then(function(tasks) {
-                    GroupUsers.get({group_id: groupId}, function (users) {
-                        var hallDevelopers = hall(tasks, users);
-                        //change it to array
-                        var devsArray = [];
-                        angular.forEach(hallDevelopers, function(item) {
-                            devsArray.push(item);
-                        });
-                        devsArray.sort(function(a, b) {
-                            return a.issues_solved > b.issues_solved;
-                        });
-
-                        $scope.shame = devsArray.slice(0, hallLength).reverse();
-                        $scope.fame = devsArray.slice(-hallLength).reverse();
-                    },
-                    function(error) {
-                        console.log('Could not get list of users');
-                    });
-                });
-                $timeout(tick, 30000);
-            })();
         }
-    ])
-    .controller('MyCtrl2', [function() {
-
-    }]);
+    ]);

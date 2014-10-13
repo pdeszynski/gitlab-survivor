@@ -42,7 +42,7 @@
                 <h2><span>Hall of Fame</span></h2>
                 <ol>
                     <li ng-repeat="developer in fame">
-                        <span class="name">{{developer.firstname}} {{developer.lastname}}</span>
+                        <span class="name">{{developer.name}}</span>
                         <span class="count">({{developer.issues_solved}})</span>
                     </li>
                 </ol>
@@ -55,7 +55,7 @@
                 <h2><span>Hall of Shame</span></h2>
                 <ol>
                     <li ng-repeat="developer in shame">
-                        <span class="name">{{developer.firstname}} {{developer.lastname}}</span>
+                        <span class="name">{{developer.name}}</span>
                         <span class="count">({{developer.issues_solved}})</span>
                     </li>
                 </ol>

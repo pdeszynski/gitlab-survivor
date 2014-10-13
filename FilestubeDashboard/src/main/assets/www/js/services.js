@@ -18,14 +18,14 @@ angular.module('ftDashboard.services', [])
          return redmineUri + '/projects/filestube/';
     }])
     .value('groupId', 19)
-    .value('gitlabProjectId', 73)
-    .value('gitlabUri', 'https://git.red-sky.pl/')
+    .value('gitlabProjectId', 953)
+    .value('gitlabUri', 'https://git.i.red-sky.pl/')
     .factory('gitlabProjectUri', ['gitlabUri', 'gitlabProjectId', function(gitlabUri, gitlabProjectId) {
         return gitlabUri + 'api/v3/projects/' + gitlabProjectId + '/';
     }])
     .value('jenkinsUri', 'http://jenkins.i.red-sky.pl/')
     .factory('jenkinsProjectUri', ['jenkinsUri', function(jenkinsUri) {
-        return jenkinsUri + 'job/FilesTube-Frontend-Master-ftbuild/lastBuild/api/json';
+        return jenkinsUri + 'job/TubeSter-Deploy-Testing/lastBuild/api/json';
     }])
 
     .factory('Versions', ['$resource', 'projectUri', 'redmineKey', function ($resource, projectUri, redmineKey) {
@@ -75,7 +75,7 @@ angular.module('ftDashboard.services', [])
                 recursiveGet();
                 return defer.promise;
             }
-        }
+        };
     }])
 
     .factory('GroupUsers', ['$resource', 'redmineUri', 'redmineKey', 'groupId', function($resource, redmineUri, redmineKey, groupId) {
@@ -254,7 +254,7 @@ angular.module('ftDashboard.services', [])
          * Factory responsible for merge requests data from gitlab
          */
         function($resource, $q, gitlabProjectUri, gitlabToken, maxRecursiveCalls) {
-            var limit = 100, resource = $resource(gitlabProjectUri + 'merge_requests', {private_token: gitlabToken, per_page: limit}, {
+            var limit = 100, resource = $resource(gitlabProjectUri + 'merge_requests', {private_token: gitlabToken, per_page: limit, state: 'opened'}, {
                     get: {method: 'GET', isArray: true}
                 }),
                 mergeRequestsCount = 0,
