@@ -5,3 +5,6 @@ node_modules
 FilestubeDashboard/src/main/assets/www/components/
 
 FilestubeDashboard/build/
+
+*.sublime-project
+*.sublime-workspace
