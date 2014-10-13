@@ -111,12 +111,15 @@ fetch the changes and merge them into your project with git.
         directives.js   --> application directives
         filters.js      --> custom angular filters
         services.js     --> custom angular services
-      lib/              --> angular and 3rd party javascript libraries
-        angular/
-          angular.js        --> the latest angular js
-          angular.min.js    --> the latest minified angular js
-          angular-*.js      --> angular add-on modules
-          version.txt       --> version number
+        components      --> general components
+          general-component.js
+        version/              --> some kind of comopnent for e.g. version related components
+          version.js                 --> version module declaration and basic "version" value service
+          version_test.js            --> "version" value service tests
+          version-directive.js       --> custom directive that returns the current app version
+          version-directive_test.js  --> version directive tests
+          interpolate-filter.js      --> custom interpolation filter
+          interpolate-filter_test.js --> interpolate filter tests
       partials/             --> angular view partials (partial html templates)
         partial1.html
         partial2.html
