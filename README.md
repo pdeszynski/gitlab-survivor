@@ -2,7 +2,7 @@
 
 ## Overview
 
-This dasboard is based on [GithubSurvivor by 99designs](https://github.com/99designs/githubsurvivor) (at least the UI design and the dashboard idea). The difference is that, this app is not an website but an **Android App**.
+This dasboard is based on [GithubSurvivor by 99designs](https://github.com/99designs/githubsurvivor) (at least the UI design and the dashboard idea). The difference is that, this is an **Android JS App** instead of python web application
 
 Why it is for? You do not want to always have a lot of tabs open and observe if there are any merge requests in your project or the build is currently failing. This dashboard will solve your problems! One place to join them all!
 
