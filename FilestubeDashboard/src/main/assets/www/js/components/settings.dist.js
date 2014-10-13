@@ -16,9 +16,9 @@
              return redmineUri + '/projects/[your project name in a redmine]/';
         }])
         //redmine group id
-        .value('groupId', 19)
+        .value('groupId', 'your group ID (integer)')
 
-        .value('gitlabProjectId', 953)
+        .value('gitlabProjectId', 'your gitlab project ID')
         .value('gitlabToken', 'your gitlab private token')
         .value('gitlabUri', 'your gitlab URI with a trailing slash')
         .factory('gitlabProjectUri', ['gitlabUri', 'gitlabProjectId', function(gitlabUri, gitlabProjectId) {
