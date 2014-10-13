@@ -10,7 +10,7 @@
                 var Users = $resource(youtrackUri + 'rest/admin/user', {
                     project: youtrackProjectId
                 }, {
-                    get: {method: 'GET', isArray: true}
+                    get: {method: 'GET', isArray: true, max: 20}
                 });
                 return {
                     get: function () {

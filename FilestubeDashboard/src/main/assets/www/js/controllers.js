@@ -2,10 +2,17 @@
 
 /* Controllers */
 
-angular.module('ftDashboard.controllers', ['ftDashboard.components.login', 'ftDashboard.hall.hall', 'ftDashboard.hall.sprints', 'ftDashboard.issues.issues']).
+angular.module('ftDashboard.controllers', [
+        'ftDashboard.components.login',
+        'ftDashboard.hall.hall',
+        'ftDashboard.hall.sprints',
+        'ftDashboard.issues.issues',
+        'ftDashboard.build.status',
+        'ftDashboard.mergeRequests.mergeRequests'
+    ]).
     controller('Index', [
-        '$scope', '$q', '$timeout', '$interval', 'backendLogin', 'sprints', 'issues', 'Jenkins', 'gitlabMergeRequests', 'hall',
-        function($scope, $q, $timeout, $interval, backendLogin, sprints, issues, Jenkins, gitlabMergeRequests, hall) {
+        '$scope', '$q', '$timeout', '$interval', 'backendLogin', 'sprints', 'issues', 'buildStatus', 'mergeRequests', 'hall', 'hallLength',
+        function($scope, $q, $timeout, $interval, backendLogin, sprints, issues, buildStatus, mergeRequests, hall, hallLength) {
             //has to have default values, cause it will crash - chart can start drawing before data was applied to DOM
             $scope.bugsByDate = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0', bugsClosed: '0'}];
             $scope.bugsSummarized = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0'}];
@@ -46,8 +53,8 @@ angular.module('ftDashboard.controllers', ['ftDashboard.components.login', 'ftDa
                         hall.get()
                             .then(function (hallUsers) {
                                 console.log('hall users', hallUsers);
-                                $scope.fame = hallUsers.slice(0, 3);
-                                $scope.shame = hallUsers.slice(-3).reverse();
+                                $scope.fame = hallUsers.slice(0, hallLength);
+                                $scope.shame = hallUsers.slice(-hallLength).reverse();
                             }
                         );
                     }
@@ -59,12 +66,12 @@ angular.module('ftDashboard.controllers', ['ftDashboard.components.login', 'ftDa
             //change the code to make it easier, without callback hell
             (function tick() {
                 //poll jenkins build status
-                Jenkins.get()
+                buildStatus.get()
                     .then(function (projectInfo) {
-                        $scope.wasBuildSuccessful = Jenkins.wasSuccessful();
-                        $scope.buildInProgress = Jenkins.inProgress();
+                        $scope.wasBuildSuccessful = buildStatus.wasSuccessful();
+                        $scope.buildInProgress = buildStatus.inProgress();
                     }, function (error) {
-                        console.log('An error occured while obtaining data from Jenkins');
+                        console.log('An error occured while obtaining data from buildStatus');
                         console.log(error);
                     })
                     .finally(function() {
@@ -73,7 +80,7 @@ angular.module('ftDashboard.controllers', ['ftDashboard.components.login', 'ftDa
             })();
             (function tick() {
                 //poll for merge requests
-                gitlabMergeRequests.get()
+                mergeRequests.get()
                     .then(function (count) {
                         $scope.mergeRequests = count;
                     }, function (error) {

@@ -1,12 +1,22 @@
 (function () {
     'use strict';
 
-    angular.module('ftDashboard.issues.issues', [])
+    angular.module('ftDashboard.issues.issues', ['ftDashboard.components.settings'])
         .factory('issues', ['issuesYoutrack', function (implementation) {
             return implementation;
         }])
-        .factory('issues-redmine',
+        .factory('issuesRedmine',
             ['$resource', '$q', 'projectUri', 'redmineKey', 'maxRecursiveCalls',
+            /**
+             * An issues backend for a redmine instance
+             *
+             * @param  {[type]} $resource         [description]
+             * @param  {[type]} $q                [description]
+             * @param  {[type]} projectUri        [description]
+             * @param  {[type]} redmineKey        [description]
+             * @param  {[type]} maxRecursiveCalls [description]
+             * @return {[type]}                   [description]
+             */
             function($resource, $q, projectUri, redmineKey, maxRecursiveCalls) {
                 var limit = 100,
                     resource = $resource(projectUri + 'issues.json', {key: redmineKey, status_id: '*', limit: limit});
@@ -46,8 +56,161 @@
             }
         ]
     )
+    .factory('issuesGitlab', ['$resource', '$q', 'gitlabProjectUri', 'gitlabToken',
+        /**
+         * Factory responsible for obtaining data from gitlab
+         */
+        function($resource, $q, gitlabProjectUri, gitlabToken) {
+        //cause we don't know how many issues are needed and there's no necessary filtering, limit it to 100 issues
+        var limit = 100,
+            resource = $resource(gitlabProjectUri + 'issues', {private_token: gitlabToken, per_page: limit}, {
+                get: {method: 'GET', isArray: true}
+            }),
+            bugsOpenedSum = 0, bugsByDate = [], bugsSummarized = [], delta = 0,
+            dateToDayBeginning = function(dateString) {
+                var date = new Date(dateString);
+                date.setHours(0);
+                date.setMinutes(0);
+                date.setSeconds(0);
+
+                return date;
+            },
+            initDayStat = function(dates, dateString) {
+                if (dates[dateString] === undefined) {
+                    dates[dateString] = {
+                        bugsOpened: 0,
+                        bugsClosed: 0
+                    };
+                }
+            };
+
+        return {
+            get: function() {
+                bugsByDate = [];
+                bugsSummarized = [];
+                bugsOpenedSum = 0;
+                delta = 0;
+                var defer = $q.defer(),
+                    page = 0,
+                    bugsGroupped = {},
+                    recursiveGet = function() {
+                        page++;
+                        resource.get({page: page}, function(issues) {
+                            angular.forEach(issues, function(issue) {
+                                if (issue.state == "opened") {
+                                    ++bugsOpenedSum;
+                                }
+
+                                var createdDate = dateToDayBeginning(issue.created_at),
+                                    updateDate = dateToDayBeginning(issue.updated_at);
+                                createdDate = createdDate.toISOString();
+                                updateDate = updateDate.toISOString();
+                                initDayStat(bugsGroupped, createdDate);
+                                initDayStat(bugsGroupped, updateDate);
+                                bugsGroupped[createdDate]['bugsOpened']++;
+                                if (issue.state == "closed") {
+                                    bugsGroupped[updateDate]['bugsClosed']++;
+                                }
+                            });
+
+                            if (issues.length < limit) {
+                                angular.forEach(bugsGroupped, function(bugs, day) {
+                                    bugsByDate.push({
+                                        date: new Date(Date.parse(day)),
+                                        bugsOpened: bugs.bugsOpened,
+                                        bugsClosed: bugs.bugsClosed
+                                    });
+                                });
+                                bugsByDate.sort(function (a, b) {
+                                    return a.date.getTime() - b.date.getTime();
+                                });
+                                defer.resolve(issues);
+                            } else {
+                                recursiveGet();
+                            }
+                        }, function(error) {
+                            defer.reject(error);
+                        });
+                    };
+                recursiveGet();
+                return defer.promise;
+            },
+
+            getBugsOpened: function() {
+                return bugsOpenedSum;
+            },
+
+            getBugsByDate: function(sprintStartDate) {
+                var bugsFromDate = [];
+                if (sprintStartDate === undefined) {
+                    return bugsByDate;
+                }
+
+                sprintStartDate = new Date(sprintStartDate);
+                sprintStartDate.setHours(0);
+                sprintStartDate.setMinutes(0);
+                sprintStartDate.setSeconds(0);
+                angular.forEach(bugsByDate, function(bug) {
+                    if (bug.date >= sprintStartDate) {
+                        bugsFromDate.push(bug);
+                    }
+                });
+
+                return bugsFromDate;
+            },
+
+            /**
+             * Calculate summarized amount of bugs by date
+             * Returns only bugs which are at current sprint
+             */
+            getBugsSummarized: function(sprintStartDate) {
+                var bugsOpened = 0, bugsSummarized = [], bugsByDate = this.getBugsByDate();
+
+                sprintStartDate = new Date(sprintStartDate);
+                sprintStartDate.setHours(0);
+                sprintStartDate.setMinutes(0);
+                sprintStartDate.setSeconds(0);
+
+                for (var i = 0, len = bugsByDate.length; i < len; ++i) {
+                    var today = bugsByDate[i];
+                    bugsOpened += today.bugsOpened - today.bugsClosed;
+
+                    if (today.date >= sprintStartDate) {
+                        //push only ones which are from current sprint on graph
+                        bugsSummarized.push({
+                            date: today.date,
+                            bugsOpened: bugsOpened
+                        });
+                    }
+                }
+
+                return bugsSummarized;
+            },
+
+            /**
+             * Get info how many bugs increased from the beginning of this sprint
+             */
+            getBugsDelta: function(sprintStartDate) {
+                var delta = 0, bugsSummarized = this.getBugsSummarized(sprintStartDate);
+                if (bugsSummarized.length) {
+                    delta = bugsSummarized[bugsSummarized.length - 1].bugsOpened - bugsSummarized[0].bugsOpened;
+                }
+
+                return delta;
+            }
+        };
+    }])
     .factory('issuesYoutrack', [
         '$resource', '$q', 'youtrackUri', 'youtrackProjectId',
+        /**
+         * An issues backend for youtrack
+         * @param  {Object} $resource         Angular resource
+         * @param  {Object} $q                Defered
+         * @param  {String} youtrackUri       URI to youtrack
+         * @param  {String} youtrackProjectId Id of an youtrack project
+         *
+         * @return {Object}
+         */
         function ($resource, $q, youtrackUri, youtrackProjectId) {
             var filter = {
                 sprints: 'Fix versions',
@@ -78,6 +241,10 @@
                 this.to = to;
             }
 
+            function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
             function queryString(filters) {
                 var valueSeparator = ': ';
                 return filters.map(function (element) {
@@ -87,6 +254,8 @@
                         str += negate + '{' + (negate.length ? element.value.substr(1) : element.value) + '}';
                     } else if (element.value instanceof DateRange) {
                         str += element.value.from + ' .. ' + element.value.to;
+                    } else if (isNumeric(element.value)) {
+                        str += element.value;
                     }
                     return str;
                 }).join(' ');
