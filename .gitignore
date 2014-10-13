@@ -3,6 +3,7 @@
 .idea
 node_modules
 FilestubeDashboard/src/main/assets/www/components/
+FilestubeDashboard/src/main/assets/www/js/components/settings.js
 
 FilestubeDashboard/build/
 
