@@ -6,7 +6,7 @@ This dasboard is based on [GithubSurvivor by 99designs](https://github.com/99des
 
 Why it is for? You do not want to always have a lot of tabs open and observe if there are any merge requests in your project or the build is currently failing. This dashboard will solve your problems! One place to join them all!
 
-Why this approach instead of an app? You can run this on a device like hackberry connected with a monitor, without any server for hosting the backend, only the tools you use itself. The second difference are the backends which this dashboard integrates. For now it uses **Youtrack** and **Gitlab**. Additionally it is possible to integrate as an issues backend **Redmine** with Backlogs extension installed. 
+Why this approach instead of an app? You can run this on a device like hackberry connected with a monitor (or you phone), without any server for hosting the backend, only the tools you use itself. The second difference are the backends which this dashboard integrates. For now it uses **Youtrack** and **Gitlab**. Additionally it is possible to integrate as an issues backend **Redmine** with Backlogs extension installed. 
 
 Also there are some differences how the calculations are made, for e.g. Hall of Fame/Shame.
 
