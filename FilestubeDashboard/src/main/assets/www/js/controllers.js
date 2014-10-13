@@ -11,8 +11,8 @@ angular.module('ftDashboard.controllers', [
         'ftDashboard.mergeRequests.mergeRequests'
     ]).
     controller('Index', [
-        '$scope', '$q', '$timeout', '$interval', 'backendLogin', 'sprints', 'issues', 'buildStatus', 'mergeRequests', 'hall', 'hallLength',
-        function($scope, $q, $timeout, $interval, backendLogin, sprints, issues, buildStatus, mergeRequests, hall, hallLength) {
+        '$scope', '$q', '$timeout', 'backendLogin', 'sprints', 'issues', 'buildStatus', 'mergeRequests', 'hall', 'hallLength',
+        function($scope, $q, $timeout, backendLogin, sprints, issues, buildStatus, mergeRequests, hall, hallLength) {
             //has to have default values, cause it will crash - chart can start drawing before data was applied to DOM
             $scope.bugsByDate = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0', bugsClosed: '0'}];
             $scope.bugsSummarized = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0'}];
@@ -57,8 +57,9 @@ angular.module('ftDashboard.controllers', [
                                 $scope.shame = hallUsers.slice(-hallLength).reverse();
                             }
                         );
+                        $timeout(generateHall, 30 * 1000);
                     }
-                    $interval(generateHall, 30 * 1000);
+                    generateHall();
                 }, function () {
                     console.log('An error occured while login in to youtrack');
                 });
