@@ -31,7 +31,6 @@
         }])
         //redmine group id
         .value('groupId', 'your group ID (integer) containing users')
-
         .factory('Versions', ['$resource', 'projectUri', 'redmineKey', function ($resource, projectUri, redmineKey) {
             return $resource(projectUri + 'versions.json', {key: redmineKey});
         }])
