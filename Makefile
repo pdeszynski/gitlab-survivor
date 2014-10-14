@@ -33,12 +33,8 @@ help:
 	@echo -e "******************************************************\n"; \
 	echo -e "${GREEN}Usage:${WHITE}\n"; \
 	echo -e "${YELLOW}init:${WHITE}\n Initializes application environment"; \
-	echo -e "${YELLOW}css:${WHITE}\n Generate CSS"; \
-	echo -e "${YELLOW}css-watch:${WHITE}\n Runs task which observers changes to less files and compiles them"; \
 	echo -e "${YELLOW}bower:${WHITE}\n Update bower js files"; \
-	echo -e "${YELLOW}packages:${WHITE}\n Installs required ubuntu packages for other tasks"; \
 	echo -e "${YELLOW}node-packages:${WHITE}\n Installs required nodejs packages"; \
-	echo -e "${YELLOW}bootstrap:${WHITE}\n Rebuilds bootstrap with latest submodule commited version"; \
 	echo -e "${YELLOW}weinre:${WHITE}\n Run Weinre debugger server"
 
 css:
@@ -59,17 +55,23 @@ packages:
 
 node-packages:
 	npm install
-
-#Inner task used for updating submodules
-submodule-update:
-	echo -e "${GREEN}Updating git submodules${WHITE}"
-	git submodule init
-	git submodule update
+	@if [[ `which bower` == "" ]]; then \
+		echo -e "${RED}Installing global bower because it's missing${WHITE}"; \
+		npm -g install bower; \
+	else \
+		echo -e "${GREEN}Bower already installed, skipping${WHITE}\n"; \
+	fi
+	@if [[ `which weinre` == "" ]]; then \
+		echo -e "${RED}Installing global weinre because it's missing${WHITE}"; \
+		npm -g install weinre; \
+	else \
+		echo -e "${GREEN}Weinre already installed, skipping${WHITE}\n"; \
+	fi
 
 bootstrap: submodule-update
 	$(call bootstrap)
 
-init: packages submodule-update node-packages css bootstrap
+init: node-packages
 	$(call bower)
 
 weinre:
