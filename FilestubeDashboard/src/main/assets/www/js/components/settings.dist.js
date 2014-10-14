@@ -10,14 +10,6 @@
         .value('youtrackUserRole', 'youtrack user role to be tracked in hall')
         .value('youtrackAgileBoard', 'name of the agile board')
 
-        .value('redmineKey', 'your redmine key')
-        .value('redmineUri', 'your redmine URI with trailing slash')
-        .factory('projectUri', ['redmineUri', function(redmineUri) {
-             return redmineUri + '/projects/[your project name in a redmine]/';
-        }])
-        //redmine group id
-        .value('groupId', 'your group ID (integer)')
-
         .value('gitlabProjectId', 'your gitlab project ID')
         .value('gitlabToken', 'your gitlab private token')
         .value('gitlabUri', 'your gitlab URI with a trailing slash')
@@ -31,10 +23,24 @@
             return jenkinsUri + 'job/<your project name>/lastBuild/api/json';
         }])
 
+        //if you're using remine as a issues backend, then this should be filled
+        .value('redmineKey', 'your redmine key')
+        .value('redmineUri', 'your redmine URI with trailing slash')
+        .factory('projectUri', ['redmineUri', function(redmineUri) {
+             return redmineUri + '/projects/[your project name in a redmine]/';
+        }])
+        //redmine group id
+        .value('groupId', 'your group ID (integer) containing users')
+
         .factory('Versions', ['$resource', 'projectUri', 'redmineKey', function ($resource, projectUri, redmineKey) {
             return $resource(projectUri + 'versions.json', {key: redmineKey});
         }])
 
+        /*
+         * General app settings, independent to backends, but might be used
+         * by them as well.
+         *
+         */
         .value('hallLength', 3)
         //defines how long pagination should be done before quitting
         .value('maxRecursiveCalls', 200)
