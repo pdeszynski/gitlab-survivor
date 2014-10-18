@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ftDashboard.mergeRequests.mergeRequests', ['ftDashboard.components.settings'])
+    angular.module('ftDashboard.mergeRequests.mergeRequests', ['ftDashboard.components.settings', 'ngResource'])
         .factory('mergeRequests', ['mergeRequestsGitlab', function (implementation) {
             return implementation;
         }])
@@ -51,15 +51,6 @@
                         recursiveGet();
 
                         return defer.promise;
-                    },
-                    getMergeReady: function() {
-                        if (openRequests.length === 0) {
-                            this.get().then(this.getMergeReady);
-                        }
-                        //TODO: use q.all([promises]);
-                        angular.forEach(openRequests, function(request) {
-
-                        });
                     }
                 };
         }])

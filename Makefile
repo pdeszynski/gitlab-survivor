@@ -35,7 +35,8 @@ help:
 	echo -e "${YELLOW}init:${WHITE}\n Initializes application environment"; \
 	echo -e "${YELLOW}bower:${WHITE}\n Update bower js files"; \
 	echo -e "${YELLOW}node-packages:${WHITE}\n Installs required nodejs packages"; \
-	echo -e "${YELLOW}weinre:${WHITE}\n Run Weinre debugger server"
+	echo -e "${YELLOW}weinre:${WHITE}\n Run Weinre debugger server"; \
+	echo -e "${YELLOW}chrome-developer:${WHITE}\n Runs chrome with disable-web-security flag. This way it's possible to develop app using chrome instead of android app"
 
 css:
 	echo -e "${GREEN}Runnig less compiler${WHITE}"
@@ -77,4 +78,11 @@ init: node-packages
 weinre:
 	weinre --httpPort 8083 --boundHost -all- --debug -true
 
-.PHONY: all css clean-css bower init css css-watch
+chrome-developer:
+	open -a Google\ Chrome --args --disable-web-security
+
+tests:
+	npm test
+
+
+.PHONY: all css clean-css bower init css css-watch tests chrome-developer
