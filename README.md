@@ -31,4 +31,18 @@ If your build will fail you'll fail the game, so watch out. Build status current
 
 If you would like to implement a new backend, you should put it in a file where it belongs to as a service. For example, if you would like to implement issues for Github you should create new service in ```issues/github.js``` with a name ```issuesGithub``` in a module ```ftDashboard.issues.github```. You can put also additional services there. To change the implementation you should change the main file for a module, in this case it would be ```issues/issues.js```. This way the details of an implementation won't leak into the controller.
 
+## Tests
+
+Simplest way to run tests is to run either
+
+```
+make tests
+```
+
+either directly through npm:
+
+```
+npm test
+```
+
 
