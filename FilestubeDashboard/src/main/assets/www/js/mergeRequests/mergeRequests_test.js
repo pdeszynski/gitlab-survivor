@@ -6,9 +6,8 @@ describe('ftDashboard.mergeRequests.mergeRequests module', function() {
     beforeEach(module('ftDashboard.mergeRequests.mergeRequests'));
 
     beforeEach(function () {
-        angular.mock.inject(function ($injector, $q) {
+        angular.mock.inject(function ($injector) {
             $httpBackend = $injector.get('$httpBackend');
-            $q = $injector.get('$q');
         });
     });
 
@@ -17,7 +16,7 @@ describe('ftDashboard.mergeRequests.mergeRequests module', function() {
             expect(mergeRequests.get).toBeDefined();
         }));
 
-        it('should return number of opened merge requests', inject(function (mergeRequests, $q) {
+        it('should return number of opened merge requests', inject(function (mergeRequests) {
             $httpBackend.expectGET()
                 .respond([
                     {state: 'opened'},
