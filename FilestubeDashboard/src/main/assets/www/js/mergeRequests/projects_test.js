@@ -56,19 +56,8 @@ describe('ftDashboard.mergeRequests.projects module', function() {
     });
 
     describe('projectsGitlab service multiple projects', function () {
-        beforeEach(inject(function ($q) {
-            // var defer = $q.defer();
-            // var resourceMock = function () {
-            //     return {
-            //         get: function () {
-            //             return {
-            //                 $promise: defer.promise
-            //             };
-            //         }
-            //     };
-            // };
+        beforeEach(inject(function () {
             provider.value('gitlabProjectId', [1, 2, 3]);
-            // provider.value('$resource', resourceMock);
         }));
         it ('should be able to handle array of project ids', inject(function (gitlabProjectId, projectsGitlab) {
             var expectedProjects = [
