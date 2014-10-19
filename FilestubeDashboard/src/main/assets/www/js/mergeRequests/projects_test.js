@@ -5,6 +5,7 @@ describe('ftDashboard.mergeRequests.projects module', function() {
     var $httpBackend, q, provider;
     beforeEach(module('ftDashboard.mergeRequests.projects', function ($provide) {
         provider = $provide;
+        provider.value('gitlabProjectId', [1]);
     }));
 
     beforeEach(function () {

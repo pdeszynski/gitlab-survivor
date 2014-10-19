@@ -1,56 +1,58 @@
 (function () {
     'use strict';
 
-    angular.module('ftDashboard.mergeRequests.mergeRequests', ['ftDashboard.components.settings', 'ngResource'])
+    angular.module('ftDashboard.mergeRequests.mergeRequests', [
+            'ftDashboard.components.settings',
+            'ftDashboard.mergeRequests.projects',
+            'ngResource'
+        ])
+        .factory('MergeRequestsModel', function () {
+            function MergeRequests(projectName, count) {
+                this.projectName = projectName;
+                this.count = count;
+            }
+
+            MergeRequests.prototype = {
+                getProjectName: function () {
+                    return this.projectName;
+                },
+                getCount: function () {
+                    return this.count;
+                }
+            };
+            return MergeRequests;
+        })
         .factory('mergeRequests', ['mergeRequestsGitlab', function (implementation) {
             return implementation;
         }])
-        .factory('mergeRequestsGitlab', ['$resource', '$q', 'gitlabProjectUri', 'gitlabToken', 'maxRecursiveCalls',
+        .factory('mergeRequestsGitlab', [
+            '$resource', '$q', 'gitlabUri', 'gitlabProjectId', 'gitlabToken', 'projects', 'MergeRequestsModel',
             /**
              * Factory responsible for merge requests data from gitlab
              */
-            function($resource, $q, gitlabProjectUri, gitlabToken, maxRecursiveCalls) {
-                var limit = 100, resource = $resource(gitlabProjectUri + 'merge_requests', {
+            function($resource, $q, gitlabUri, gitlabProjectId, gitlabToken, projects, MergeRequestsModel) {
+                var limit = 100, MergeRequests = $resource(gitlabUri + 'api/v3/projects/:projectId/merge_requests', {
                             private_token: gitlabToken,
                             per_page: limit,
                             state: 'opened'
-                        }, {
-                        get: {method: 'GET', isArray: true}
-                    }),
-                    mergeRequestsCount = 0,
-                    page = 0,
-                    openRequests = [];
+                        });
 
                 return {
                     get: function() {
-                        openRequests = [];
-                        var defer = $q.defer(),
-                            mergeRequestsCount = 0,
-                            recursionDepth = 0,
-                            page = 0,
-                            recursiveGet = function() {
-                                page++;
-                                resource.get({page: page}, function(mergeRequests) {
-                                    angular.forEach(mergeRequests, function(request) {
-                                        if (request.state == "opened") {
-                                            ++mergeRequestsCount;
-                                            openRequests.push(request);
-                                        }
-                                    });
-                                    if (mergeRequests.length == limit && maxRecursiveCalls > recursionDepth) {
-                                        recursionDepth++;
-                                        recursiveGet();
-                                    } else {
-                                        defer.resolve(mergeRequestsCount);
-                                    }
-                                }, function(error) {
-                                   defer.reject(error);
+                        return projects.get()
+                            .then(function (projects) {
+                                var promises = [];
+                                angular.forEach(projects, function (project) {
+                                    promises.push(MergeRequests.query({projectId: project.getId()})
+                                        .$promise
+                                        .then(function (mr) {
+                                            return new MergeRequestsModel(project.getName(), mr.length);
+                                        })
+                                    );
                                 });
 
-                            };
-                        recursiveGet();
-
-                        return defer.promise;
+                                return $q.all(promises);
+                            });
                     }
                 };
         }])

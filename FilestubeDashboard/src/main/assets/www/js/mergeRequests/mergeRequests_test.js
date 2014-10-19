@@ -2,12 +2,21 @@
 'use strict';
 
 describe('ftDashboard.mergeRequests.mergeRequests module', function() {
-    var $httpBackend, q;
-    beforeEach(module('ftDashboard.mergeRequests.mergeRequests'));
+    var $httpBackend, projectsMock, provider, projectsDefer;
+    beforeEach(module('ftDashboard.mergeRequests.mergeRequests', function ($provide) {
+        provider = $provide;
+    }));
 
     beforeEach(function () {
-        angular.mock.inject(function ($injector) {
+        angular.mock.inject(function ($injector, $q) {
+            projectsDefer = $q.defer();
             $httpBackend = $injector.get('$httpBackend');
+            projectsMock = {
+                get: function () {
+                    return projectsDefer.promise;
+                }
+            };
+            provider.value('projects', projectsMock);
         });
     });
 
@@ -23,8 +32,14 @@ describe('ftDashboard.mergeRequests.mergeRequests module', function() {
                     {state: 'opened'}
                 ]);
             var result = mergeRequests.get();
+
+            projectsDefer.resolve([{
+                getName: function () {return 'test';},
+                getId: function () {return 1;}
+            }]);
+
             result.then(function (openedCount) {
-                expect(openedCount).toBe(2);
+                expect(openedCount).toEqual([{ projectName: 'test', count: 2 }]);
             });
             $httpBackend.flush();
         }));

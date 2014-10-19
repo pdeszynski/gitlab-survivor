@@ -12,7 +12,7 @@ angular.module('ftDashboard.controllers', [
     ]).
     controller('Index', [
         '$scope', '$q', '$timeout', 'backendLogin', 'sprints', 'issues', 'buildStatus', 'mergeRequests', 'hall', 'hallLength',
-        function($scope, $q, $timeout, backendLogin, sprints, issues, buildStatus, mergeRequests, hall, hallLength) {
+        function($scope, $q, $timeout, backendLogin, sprints, issues, buildStatus, mergeRequests, hall, hallLength, projects) {
             //has to have default values, cause it will crash - chart can start drawing before data was applied to DOM
             $scope.bugsByDate = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0', bugsClosed: '0'}];
             $scope.bugsSummarized = [{date: '0000-00-00T00:00:00+02:00', bugsOpened: '0'}];
@@ -63,8 +63,7 @@ angular.module('ftDashboard.controllers', [
                 }, function () {
                     console.log('An error occured while login in to youtrack');
                 });
-            //TODO: now $q has .all function which can wait for all defereds
-            //change the code to make it easier, without callback hell
+
             (function tick() {
                 //poll jenkins build status
                 buildStatus.get()
@@ -79,11 +78,15 @@ angular.module('ftDashboard.controllers', [
                         $timeout(tick, 5000);
                     });
             })();
+
             (function tick() {
                 //poll for merge requests
                 mergeRequests.get()
-                    .then(function (count) {
-                        $scope.mergeRequests = count;
+                    .then(function (mergeRequests) {
+                        $scope.mergeRequestsSum = mergeRequests.reduce(function (previous, current) {
+                            return previous + current.getCount();
+                        }, 0);
+                        $scope.mergeRequests = mergeRequests;
                     }, function (error) {
                         console.log('An error occured while obtaining merge requests');
                         console.log(error);
