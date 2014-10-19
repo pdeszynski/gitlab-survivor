@@ -15,14 +15,27 @@
                     });
                 var now = new Date();
                 function filterSprints(sprint) {
+                    //sprints that doesn't have yet start and the end
+                    //doesn't count at all
                     if (!sprint.finish || !sprint.start) {
                         return false;
                     }
-                    var start = new Date(sprint.start + " " + now.getUTCFullYear()),
-                        end = new Date(sprint.finish + " " + now.getUTCFullYear());
+                    var start = normalizeDate(sprint.start),
+                        end = normalizeDate(sprint.finish);
                     //move to the midnight (start of the next day)
                     end.setHours(24);
                     return start <= now && end >= now;
+                }
+                function normalizeDate(dateString) {
+                    if (dateString === 'Today') {
+                        var date = new Date();
+                        date.setHours(0);
+                        date.setMinutes(0);
+                        date.setSeconds(0);
+                        date.setMilliseconds(0);
+                        return date;
+                    }
+                    return new Date(dateString + " " + now.getUTCFullYear());
                 }
                 return {
                     //rename to getActive
@@ -51,10 +64,12 @@
                                     if (!filtered.length) {
                                         throw new Error("There is no active sprint");
                                     }
+
                                     angular.forEach(filtered, function (sprint) {
-                                        sprint.start  = new Date(sprint.start + " " + now.getUTCFullYear());
-                                        sprint.finish = new Date(sprint.finish + " " + now.getUTCFullYear());
+                                        sprint.start  = normalizeDate(sprint.start);
+                                        sprint.finish = normalizeDate(sprint.finish);
                                     });
+
                                     return filtered.pop();
                                 });
                         }, function () {
