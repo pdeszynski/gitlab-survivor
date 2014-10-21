@@ -9,10 +9,19 @@
         .value('youtrackProjectId', 'your youtrack project ID')
         .value('youtrackUserRole', 'youtrack user role to be tracked in hall')
         .value('youtrackAgileBoard', 'name of the agile board')
+        /**
+         * If instead of only finished tasks you want to add also burned points then
+         * fill this value, if not, it should be null. You should put here exact
+         * name of estimated story points field (with spaces and correct letter case)
+         *
+         * {String} Name of a field or null if tracking disabled
+         */
+        .value('youtrackEstimationField', "Estimated story points field name")
 
-        .value('gitlabProjectId', 'your gitlab project ID')
+        .value('gitlabProjectId', ['an array', 'of', 'your gitlab project ID'])
         .value('gitlabToken', 'your gitlab private token')
         .value('gitlabUri', 'your gitlab URI with a trailing slash')
+        //TODO: cleanup all usages of this URI, pass gitlabUri and project id instead
         .factory('gitlabProjectUri', ['gitlabUri', 'gitlabProjectId', function(gitlabUri, gitlabProjectId) {
             return gitlabUri + 'api/v3/projects/' + gitlabProjectId + '/';
         }])
@@ -42,6 +51,8 @@
          */
         .value('hallLength', 3)
         //defines how long pagination should be done before quitting
+        //you should use this value in your services if you want to implement
+        //recursive calls for data
         .value('maxRecursiveCalls', 200)
         ;
 })();

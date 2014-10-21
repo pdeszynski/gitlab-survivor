@@ -4,7 +4,9 @@
         .factory('hall', ['hallYoutrack', function (implementation) {
             return implementation;
         }])
-        .factory('hallYoutrack', ['$q', 'users', 'sprints', 'issues', function ($q, users, sprints, issues) {
+        .factory('hallYoutrack', [
+            '$q', 'users', 'sprints', 'issues', 'youtrackEstimationField',
+            function ($q, users, sprints, issues, youtrackEstimationField) {
             return {
                 get: function () {
                     return $q.all([sprints.getActive(), users.get()])
@@ -14,7 +16,7 @@
                             return issues.sprint(activeSprint)
                                 .then(function (sprintIssues) {
                                     console.log('issues this sprint', sprintIssues);
-                                    var countByUser = {}, output = [];
+                                    var countByUser = {}, output = [], estimationPoints = 0;
                                     angular.forEach(sprintIssues, function (issue) {
                                         var isResolved = false, assignee;
                                         angular.forEach(issue.field, function (field) {
@@ -24,12 +26,16 @@
                                             if (field.name === 'Assignee') {
                                                 assignee = field.value[0].value;
                                             }
+                                            if (field.name === youtrackEstimationField) {
+                                                estimationPoints = parseFloat(field.value[0]) || 0;
+                                            }
                                         });
                                         if (isResolved && assignee) {
                                             if (!countByUser[assignee]) {
                                                 countByUser[assignee] = 0;
                                             }
                                             countByUser[assignee]++;
+                                            countByUser[assignee] += estimationPoints;
                                         }
                                     });
                                     angular.forEach(developers, function (developer) {
