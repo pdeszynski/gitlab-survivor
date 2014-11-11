@@ -214,19 +214,23 @@
         function ($resource, $q, youtrackUri, youtrackProjectId) {
             var filter = {
                 sprints: 'Fix versions',
-                type: 'Type',
+                type:    'Type',
                 created: 'Created',
                 project: 'Project',
-                state: 'State'
+                state:   'State'
             }, Issues = $resource(youtrackUri + 'rest/issue', {max: 100});
 
             function timestampToDate(timestamp) {
                 var date = new Date(parseInt(timestamp));
-                date.setHours(0);
-                date.setMinutes(0);
-                date.setSeconds(0);
-                date.setMilliseconds(0);
+                toDay(date);
                 return date;
+            }
+
+            function toDay(aDate) {
+                aDate.setHours(0);
+                aDate.setMinutes(0);
+                aDate.setSeconds(0);
+                aDate.setMilliseconds(0);
             }
 
             function init() {
@@ -241,6 +245,13 @@
                 this.to = to;
             }
 
+            /**
+             * Check if element is numeric
+             *
+             * @param  {Mixed} n Item to check
+             *
+             * @return {Boolean}
+             */
             function isNumeric(n) {
                 return !isNaN(parseFloat(n)) && isFinite(n);
             }
@@ -267,16 +278,43 @@
                     '-' + (date.getDate() < 10 ? '0' : '' ) + date.getDate();
             }
 
+            function dateMin(a, b) {
+                return [a, b].sort(function (a, b) {
+                    return a - b;
+                })[0];
+            }
+
             return {
                 bugsSprint: function (sprint) {
-                    var query = queryString([
+                    var self = this,
+                        startDate = new Date(sprint.start),
+                        finishDate = dateMin(new Date(sprint.finish), new Date()),
+                        query = queryString([
                         {name: filter.type, value: 'Bug'},
                         {name: filter.project, value: youtrackProjectId},
                         {name: filter.sprints, value: sprint.name}
                     ]);
+
+                    var days = (finishDate - startDate) / (1000*60*60*24);
                     return Issues.get({filter: query}).$promise
                         .then(function (issues) {
-                            return issues.issue;
+                            var groupped = self.countByDate(issues.issue);
+                            var keyed = {};
+                            angular.forEach(groupped, function (item) {
+                                keyed[item.date.toISOString()] = item;
+                            });
+                            groupped = [];
+                            for (var i = days - 1; i + 1 >= 0; --i) {
+                                var date = new Date(finishDate.getTime());
+                                date.setDate(date.getDate() - i);
+                                toDay(date);
+                                groupped.push(keyed[date.toISOString()] || {
+                                    bugsOpened: 0,
+                                    bugsClosed: 0,
+                                    date: date
+                                });
+                            }
+                            return groupped;
                         });
                 },
                 bugsOpened: function () {

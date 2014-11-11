@@ -1,3 +1,4 @@
+/* global console, survivor */
 'use strict';
 
 /* Controllers */
@@ -32,9 +33,8 @@ angular.module('ftDashboard.controllers', [
                                     });
                                 issues.bugsSprint(sprint)
                                     .then(function (bugs) {
-                                        var byDate = issues.countByDate(bugs);
-                                        console.log('bugsByDate', byDate);
-                                        $scope.bugsByDate = byDate;
+                                        console.log('bugs this sprint', bugs);
+                                        $scope.bugsByDate = bugs;
                                     });
                                 issues.countBugsSum(14)
                                     .then(function (sum) {
